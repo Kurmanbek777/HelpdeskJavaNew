@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateHelpdeskTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateHelpdeskLabel_ticketID}" for="ticketID" />
+                    <h:inputText id="ticketID" value="#{helpdeskController.selected.ticketID}" title="#{bundle.CreateHelpdeskTitle_ticketID}" required="true" requiredMessage="#{bundle.CreateHelpdeskRequiredMessage_ticketID}"/>
+                    <h:outputLabel value="#{bundle.CreateHelpdeskLabel_FName}" for="FName" />
+                    <h:inputText id="FName" value="#{helpdeskController.selected.FName}" title="#{bundle.CreateHelpdeskTitle_FName}" />
+                    <h:outputLabel value="#{bundle.CreateHelpdeskLabel_LName}" for="LName" />
+                    <h:inputText id="LName" value="#{helpdeskController.selected.LName}" title="#{bundle.CreateHelpdeskTitle_LName}" />
+                    <h:outputLabel value="#{bundle.CreateHelpdeskLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{helpdeskController.selected.email}" title="#{bundle.CreateHelpdeskTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateHelpdeskLabel_severityID}" for="severityID" />
+                    <h:inputText id="severityID" value="#{helpdeskController.selected.severityID}" title="#{bundle.CreateHelpdeskTitle_severityID}" />
+                    <h:outputLabel value="#{bundle.CreateHelpdeskLabel_statusID}" for="statusID" />
+                    <h:inputText id="statusID" value="#{helpdeskController.selected.statusID}" title="#{bundle.CreateHelpdeskTitle_statusID}" required="true" requiredMessage="#{bundle.CreateHelpdeskRequiredMessage_statusID}"/>
+                    <h:outputLabel value="#{bundle.CreateHelpdeskLabel_departmentID}" for="departmentID" />
+                    <h:inputText id="departmentID" value="#{helpdeskController.selected.departmentID}" title="#{bundle.CreateHelpdeskTitle_departmentID}" required="true" requiredMessage="#{bundle.CreateHelpdeskRequiredMessage_departmentID}"/>
+                    <h:outputLabel value="#{bundle.CreateHelpdeskLabel_employeeID}" for="employeeID" />
+                    <h:inputText id="employeeID" value="#{helpdeskController.selected.employeeID}" title="#{bundle.CreateHelpdeskTitle_employeeID}" />
+                    <h:outputLabel value="#{bundle.CreateHelpdeskLabel_comments}" for="comments" />
+                    <h:inputText id="comments" value="#{helpdeskController.selected.comments}" title="#{bundle.CreateHelpdeskTitle_comments}" />
+                    <h:outputLabel value="#{bundle.CreateHelpdeskLabel_severity}" for="severity" />
+                    <h:selectOneMenu id="severity" value="#{helpdeskController.selected.severity}" title="#{bundle.CreateHelpdeskTitle_severity}" >
+                        <f:selectItems value="#{severityController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateHelpdeskLabel_department}" for="department" />
+                    <h:selectOneMenu id="department" value="#{helpdeskController.selected.department}" title="#{bundle.CreateHelpdeskTitle_department}" >
+                        <f:selectItems value="#{departmentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateHelpdeskLabel_employee}" for="employee" />
+                    <h:selectOneMenu id="employee" value="#{helpdeskController.selected.employee}" title="#{bundle.CreateHelpdeskTitle_employee}" >
+                        <f:selectItems value="#{employeeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateHelpdeskLabel_status}" for="status" />
+                    <h:selectOneMenu id="status" value="#{helpdeskController.selected.status}" title="#{bundle.CreateHelpdeskTitle_status}" >
+                        <f:selectItems value="#{statusController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{helpdeskController.create}" value="#{bundle.CreateHelpdeskSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{helpdeskController.prepareList}" value="#{bundle.CreateHelpdeskShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateHelpdeskIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
